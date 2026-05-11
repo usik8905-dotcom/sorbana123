@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ========== SEO ETİKETLERİ ========== -->
+    <title>SorBana - Türkçe Soru Cevap Platformu | Merak Ettiğin Her Şeyi Sor</title>
+    <meta name="description" content="SorBana ile merak ettiğin soruları sor, yapay zekadan veya topluluktan cevap al. Türkçe soru cevap platformu.">
+    <meta name="keywords" content="soru cevap, soru sor, yapay zeka, merak, bilgi, türkçe soru cevap, sor bana, sorbana">
+    <meta name="author" content="SorBana">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://SENİN-ALAN-ADIN.netlify.app/">
+
+    <!-- Open Graph (Sosyal Medya Paylaşım) -->
+    <meta property="og:title" content="SorBana - Merak Ettiğin Her Şeyi Sor">
+    <meta property="og:description" content="Yapay zekaya veya topluluğa soru sor, cevap al. Türkçe soru cevap platformu.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://SENİN-ALAN-ADIN.netlify.app/">
+    <meta property="og:locale" content="tr_TR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SorBana - Türkçe Soru Cevap Platformu">
+    <meta name="twitter:description" content="Merak ettiğin soruları sor, yapay zekadan veya halktan cevap al!">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+
+    <!-- Schema.org Yapılandırılmış Veri (Google için) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "SorBana",
+        "alternateName": "Sor Bana",
+        "url": "https://SENİN-ALAN-ADIN.netlify.app/",
+        "description": "Türkçe soru cevap platformu. Yapay zekaya veya halka soru sorun.",
+        "inLanguage": "tr",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://SENİN-ALAN-ADIN.netlify.app/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #0f3460;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e94560, #0f3460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #53d769, #0f3460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e94560, #533483);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .user-points {
+            color: #ffd700;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e94560, #c23152);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(233,69,96,0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #53d769, #2ea043);
+            color: white;
+        }
+
+        .btn-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(83,215,105,0.4);
+        }
+
+        .btn-ai {
+            background: linear-gradient(135deg, #7c3aed, #4f46e5);
+            color: white;
+        }
+
+        .btn-ai:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(124,58,237,0.4);
+        }
+
+        .btn-logout {
+            background: transparent;
+            color: #999;
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+
+        .btn-logout:hover {
+            color: #e94560;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 10px 24px;
+            border: none;
+            background: transparent;
+            color: #888;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-tab:hover {
+            color: #e0e0e0;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #e94560, #c23152);
+            color: white;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: #e94560;
+        }
+
+        .search-bar .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #666;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 450px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .modal .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            background: none; border: none;
+            color: #888; font-size: 24px;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #e94560;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group select option {
+            background: #1a1a2e;
+        }
+
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+        }
+
+        .form-switch a {
+            color: #e94560;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, rgba(26,26,46,0.8), rgba(22,33,62,0.8));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .question-card:hover {
+            border-color: rgba(233,69,96,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .question-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .question-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e94560, #533483);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .question-author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-author { font-weight: 600; font-size: 14px; }
+        .question-time { font-size: 12px; color: #666; }
+
+        .question-type-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-public {
+            background: rgba(83,215,105,0.15);
+            color: #53d769;
+            border: 1px solid rgba(83,215,105,0.3);
+        }
+
+        .badge-ai {
+            background: rgba(124,58,237,0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(124,58,237,0.3);
+        }
+
+        .question-category {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            background: rgba(233,69,96,0.15);
+            color: #e94560;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .question-body {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .question-footer {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .vote-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vote-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .vote-btn:hover { background: rgba(233,69,96,0.2); color: #e94560; }
+        .vote-btn.voted-up { background: rgba(83,215,105,0.2); color: #53d769; border-color: rgba(83,215,105,0.4); }
+        .vote-btn.voted-down { background: rgba(233,69,96,0.2); color: #e94560; border-color: rgba(233,69,96,0.4); }
+
+        .vote-count {
+            font-weight: 700;
+            font-size: 16px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #888;
+            font-size: 13px;
+        }
+
+        .question-detail { display: none; }
+
+        .back-btn {
+            background: none; border: none;
+            color: #e94560; cursor: pointer;
+            font-size: 15px; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .back-btn:hover { text-decoration: underline; }
+
+        .answers-section { margin-top: 30px; }
+
+        .answers-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .answer-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .answer-card.ai-answer {
+            border-color: rgba(124,58,237,0.3);
+            background: rgba(124,58,237,0.05);
+        }
+
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(124,58,237,0.2);
+            color: #a78bfa;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .answer-body {
+            color: #ccc;
+            line-height: 1.7;
+            margin: 12px 0;
+            font-size: 15px;
+            white-space: pre-wrap;
+        }
+
+        .answer-form {
+            margin-top: 25px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .answer-form h4 { margin-bottom: 15px; font-size: 16px; }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .leaderboard-rank {
+            font-size: 20px;
+            font-weight: 800;
+            width: 40px;
+            text-align: center;
+        }
+
+        .rank-1 { color: #ffd700; }
+        .rank-2 { color: #c0c0c0; }
+        .rank-3 { color: #cd7f32; }
+
+        .leaderboard-info { flex: 1; }
+        .leaderboard-name { font-weight: 600; }
+        .leaderboard-stats { font-size: 13px; color: #888; }
+
+        .leaderboard-points {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state .emoji { font-size: 60px; margin-bottom: 15px; }
+        .empty-state h3 { font-size: 20px; color: #888; margin-bottom: 10px; }
+
+        .notification {
+            position: fixed;
+            top: 80px; right: 20px;
+            padding: 15px 25px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 500;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+            max-width: 350px;
+        }
+
+        .notification.success { background: linear-gradient(135deg, #53d769, #2ea043); }
+        .notification.error { background: linear-gradient(135deg, #e94560, #c23152); }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cat-filter {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: transparent;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .cat-filter:hover, .cat-filter.active {
+            background: rgba(233,69,96,0.2);
+            border-color: #e94560;
+            color: #e94560;
+        }
+
+        .delete-btn {
+            background: none; border: none;
+            color: #e94560; cursor: pointer;
+            font-size: 12px; opacity: 0.6;
+        }
+
+        .delete-btn:hover { opacity: 1; text-decoration: underline; }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #e94560, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #888;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .num {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e94560;
+        }
+
+        .hero-stat .label {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #444;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 40px;
+        }
+
+        footer a { color: #e94560; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 15px;
+            }
+
+            .main-container { padding: 15px; }
+            .question-title { font-size: 16px; }
+
+            .modal { padding: 25px; margin: 10px; }
+
+            .nav-tabs { padding: 10px 15px; }
+            .nav-tab { padding: 8px 16px; font-size: 13px; }
+
+            .hero h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="showPage('home')">Sor<span>Bana</span> 💡</div>
+        <div class="header-right" id="headerRight">
+            <button class="btn btn-secondary" onclick="showModal('login')">Giriş Yap</button>
+            <button class="btn btn-primary" onclick="showModal('register')">Kayıt Ol</button>
+        </div>
+    </header>
+
+    <!-- SEO: Görünür içerik (Google'ın taraması için) -->
+    <div class="hero" id="heroSection">
+        <h1>Merak Ettiğin Her Şeyi Sor 💡</h1>
+        <p>Yapay zekaya veya topluluğa soru sor, anında cevap al. Türkiye'nin en samimi soru-cevap platformu.</p>
+        <div class="hero-stats" id="heroStats"></div>
+    </div>
+
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="switchTab('all')" id="tab-all">🏠 Tümü</button>
+        <button class="nav-tab" onclick="switchTab('public')" id="tab-public">👥 Halka Açık</button>
+        <button class="nav-tab" onclick="switchTab('ai')" id="tab-ai">🤖 Yapay Zeka</button>
+        <button class="nav-tab" onclick="switchTab('leaderboard')" id="tab-leaderboard">🏆 Sıralama</button>
+        <button class="nav-tab" onclick="switchTab('my')" id="tab-my">📝 Sorularım</button>
+    </nav>
+
+    <main class="main-container">
+        <div id="listView">
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Soru ara..." id="searchInput" oninput="renderQuestions()">
+            </div>
+
+            <div class="category-filters" id="categoryFilters">
+                <button class="cat-filter active" onclick="filterCategory('all', this)">Tümü</button>
+                <button class="cat-filter" onclick="filterCategory('Teknoloji', this)">💻 Teknoloji</button>
+                <button class="cat-filter" onclick="filterCategory('Bilim', this)">🔬 Bilim</button>
+                <button class="cat-filter" onclick="filterCategory('Sağlık', this)">🏥 Sağlık</button>
+                <button class="cat-filter" onclick="filterCategory('Eğitim', this)">📚 Eğitim</button>
+                <button class="cat-filter" onclick="filterCategory('Günlük Hayat', this)">🌟 Günlük Hayat</button>
+                <button class="cat-filter" onclick="filterCategory('Tarih', this)">📜 Tarih</button>
+                <button class="cat-filter" onclick="filterCategory('Felsefe', this)">🤔 Felsefe</button>
+                <button class="cat-filter" onclick="filterCategory('Diğer', this)">📌 Diğer</button>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;">
+                <h2 id="pageTitle">📋 Tüm Sorular</h2>
+                <button class="btn btn-primary" onclick="showModal('ask')">✏️ Soru Sor</button>
+            </div>
+
+            <div id="questionsList"></div>
+        </div>
+
+        <div id="detailView" class="question-detail">
+            <button class="back-btn" onclick="goBack()">← Geri Dön</button>
+            <div id="detailContent"></div>
+        </div>
+
+        <div id="leaderboardView" style="display:none;">
+            <h2 style="margin-bottom:20px;">🏆 En Çok Puan Alanlar</h2>
+            <div id="leaderboardList"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>💡 <strong>SorBana</strong> - Türkçe Soru Cevap Platformu © 2024</p>
+        <p style="margin-top:8px;">Merak et, sor, öğren. <a href="#">Hakkımızda</a> · <a href="#">İletişim</a> · <a href="#">Gizlilik</a></p>
+    </footer>
+
+    <!-- MODALS -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModals()">✕</button>
+            <h2>🔐 Giriş Yap</h2>
+            <div class="form-group">
+                <label>Kullanıcı Adı</label>
+                <input type="text" id="loginUsername" placeholder="Kullanıcı adınız">
+            </div>
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="password" id="loginPassword" placeholder="Şifreniz" onkeypress="if(event.key==='Enter')login()">
+            </div>
+            <button class="btn btn-primary" style="width:100%;padding:14px;" onclick="login()">Giriş Yap</button>
+            <div class="form-switch">Hesabınız yok mu? <a onclick="showModal('register')">Kayıt Ol</a></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModals()">✕</button>
+            <h2>📝 Kayıt Ol</h2>
+            <div class="form-group">
+                <label>Kullanıcı Adı</label>
+                <input type="text" id="regUsername" placeholder="Kullanıcı adı seçin">
+            </div>
+            <div class="form-group">
+                <label>E-posta</label>
+                <input type="email" id="regEmail" placeholder="E-posta adresiniz">
+            </div>
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="password" id="regPassword" placeholder="Şifre belirleyin" onkeypress="if(event.key==='Enter')register()">
+            </div>
+            <button class="btn btn-primary" style="width:100%;padding:14px;" onclick="register()">Kayıt Ol</button>
+            <div class="form-switch">Zaten hesabınız var mı? <a onclick="showModal('login')">Giriş Yap</a></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="askModal">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModals()">✕</button>
+            <h2>❓ Soru Sor</h2>
+            <div class="form-group">
+                <label>Soru Türü</label>
+                <select id="questionType">
+                    <option value="public">👥 Halka Açık - Herkes cevaplasın</option>
+                    <option value="ai">🤖 Yapay Zeka - AI cevaplasın</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Kategori</label>
+                <select id="questionCategory">
+                    <option value="Teknoloji">💻 Teknoloji</option>
+                    <option value="Bilim">🔬 Bilim</option>
+                    <option value="Sağlık">🏥 Sağlık</option>
+                    <option value="Eğitim">📚 Eğitim</option>
+                    <option value="Günlük Hayat">🌟 Günlük Hayat</option>
+                    <option value="Tarih">📜 Tarih</option>
+                    <option value="Felsefe">🤔 Felsefe</option>
+                    <option value="Diğer">📌 Diğer</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Soru Başlığı</label>
+                <input type="text" id="questionTitle" placeholder="Sorunuzu kısaca yazın...">
+            </div>
+            <div class="form-group">
+                <label>Detaylı Açıklama</label>
+                <textarea id="questionBody" placeholder="Sorunuzu detaylıca açıklayın..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;padding:14px;" onclick="askQuestion()">Soruyu Gönder 🚀</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let currentTab = 'all';
+        let currentCategory = 'all';
+
+        function getUsers() { return JSON.parse(localStorage.getItem('sb_users') || '[]'); }
+        function saveUsers(u) { localStorage.setItem('sb_users', JSON.stringify(u)); }
+        function getQuestions() { return JSON.parse(localStorage.getItem('sb_questions') || '[]'); }
+        function saveQuestions(q) { localStorage.setItem('sb_questions', JSON.stringify(q)); }
+
+        function init() {
+            const saved = localStorage.getItem('sb_currentUser');
+            if (saved) currentUser = JSON.parse(saved);
+            if (getQuestions().length === 0) seedData();
+            updateHeader();
+            updateHeroStats();
+            renderQuestions();
+        }
+
+        function updateHeroStats() {
+            const q = getQuestions();
+            const u = getUsers();
+            const totalAnswers = q.reduce((s, x) => s + x.answers.length, 0);
+            document.getElementById('heroStats').innerHTML = `
+                <div class="hero-stat"><div class="num">${q.length}</div><div class="label">Soru</div></div>
+                <div class="hero-stat"><div class="num">${totalAnswers}</div><div class="label">Cevap</div></div>
+                <div class="hero-stat"><div class="num">${u.length}</div><div class="label">Üye</div></div>
+            `;
+        }
+
+        function seedData() {
+            const users = [
+                { username: 'admin', email: 'admin@test.com', password: '123456', points: 50 },
+                { username: 'ayse_k', email: 'ayse@test.com', password: '123456', points: 120 },
+                { username: 'mehmet_d', email: 'mehmet@test.com', password: '123456', points: 85 },
+                { username: 'zeynep_y', email: 'zeynep@test.com', password: '123456', points: 65 },
+                { username: 'ali_can', email: 'ali@test.com', password: '123456', points: 40 },
+            ];
+            saveUsers(users);
+
+            const questions = [
+                {
+                    id: 1, type: 'public', category: 'Teknoloji',
+                    title: 'Yapay zeka gelecekte hangi meslekleri yok edecek?',
+                    body: 'Teknolojinin hızla gelişmesiyle birçok mesleğin tehdit altında olduğu söyleniyor. Sizce hangi meslekler tamamen ortadan kalkabilir?',
+                    author: 'ayse_k', time: Date.now() - 3600000, votes: 15, votedBy: {},
+                    answers: [
+                        { id: 1, author: 'mehmet_d', body: 'Bence muhasebe ve veri girişi gibi tekrarlayan işler en çok risk altında. Ama yaratıcılık gerektiren meslekler hâlâ güvende olacak.', time: Date.now() - 3000000, votes: 8, votedBy: {}, isAI: false },
+                        { id: 2, author: 'admin', body: 'Çeviri, müşteri hizmetleri ve bazı hukuk işleri de risk altında. Ama tamamen yok olmak yerine dönüşeceklerini düşünüyorum.', time: Date.now() - 2000000, votes: 5, votedBy: {}, isAI: false }
+                    ]
+                },
+                {
+                    id: 2, type: 'ai', category: 'Bilim',
+                    title: 'Kara delikler nasıl oluşur?',
+                    body: 'Kara deliklerin oluşum sürecini merak ediyorum. Basitçe açıklayabilir misiniz?',
+                    author: 'mehmet_d', time: Date.now() - 7200000, votes: 22, votedBy: {},
+                    answers: [
+                        { id: 1, author: 'AI Asistan', body: 'Kara delikler, devasa yıldızların ömürlerinin sonunda yaşadığı süpernova patlamalarının ardından oluşur.\n\n🔹 Çok büyük kütleli bir yıldız yakıtını tükettiğinde, çekirdeği kendi kütleçekimi altında çöker.\n\n🔹 Bu çökme o kadar yoğundur ki, madde sonsuz küçük bir noktaya (tekillik) sıkışır.\n\n🔹 Oluşan kütleçekimi o kadar güçlüdür ki, ışık bile kaçamaz.\n\n🔹 Işığın kaçamadığı sınıra "olay ufku" denir.', time: Date.now() - 7000000, votes: 18, votedBy: {}, isAI: true }
+                    ]
+                },
+                {
+                    id: 3, type: 'public', category: 'Felsefe',
+                    title: 'Hayatın anlamı nedir sizce?',
+                    body: 'Herkesin farklı bir bakış açısı var bu konuda. Sizin hayata bakışınız nasıl?',
+                    author: 'admin', time: Date.now() - 86400000, votes: 31, votedBy: {},
+                    answers: [
+                        { id: 1, author: 'ayse_k', body: 'Bence hayatın anlamını her birey kendisi yaratır. Sevdiklerimiz, tutkularımız ve başkalarına kattığımız değer...', time: Date.now() - 80000000, votes: 12, votedBy: {}, isAI: false },
+                        { id: 2, author: 'zeynep_y', body: 'Ben de benzer düşünüyorum. Anlam aramak yerine anlam yaratmak daha doğru bir yaklaşım bence. İyi ilişkiler, faydalı işler ve kişisel gelişim...', time: Date.now() - 70000000, votes: 7, votedBy: {}, isAI: false }
+                    ]
+                },
+                {
+                    id: 4, type: 'public', category: 'Sağlık',
+                    title: 'Günde kaç saat uyumak ideal?',
+                    body: 'Bazı kaynaklar 6 saat yeterli derken bazıları 8 saat diyor. Doğrusu nedir?',
+                    author: 'ayse_k', time: Date.now() - 172800000, votes: 9, votedBy: {},
+                    answers: []
+                },
+                {
+                    id: 5, type: 'ai', category: 'Eğitim',
+                    title: 'Hızlı öğrenme teknikleri nelerdir?',
+                    body: 'Sınavlara hazırlanırken daha verimli çalışmak istiyorum.',
+                    author: 'mehmet_d', time: Date.now() - 259200000, votes: 17, votedBy: {},
+                    answers: [
+                        { id: 1, author: 'AI Asistan', body: '📌 1. Aralıklı Tekrar (Spaced Repetition)\nBilgiyi belirli aralıklarla tekrar edin.\n\n📌 2. Aktif Geri Çağırma (Active Recall)\nNotlara bakmadan hatırlamaya çalışın.\n\n📌 3. Feynman Tekniği\nÖğrendiğinizi basitçe anlatmaya çalışın.\n\n📌 4. Pomodoro Tekniği\n25 dk çalış, 5 dk mola.\n\n📌 5. Uyku Öncesi Tekrar\nUyku hafızayı pekiştirir.', time: Date.now() - 250000000, votes: 14, votedBy: {}, isAI: true }
+                    ]
+                },
+                {
+                    id: 6, type: 'public', category: 'Günlük Hayat',
+                    title: 'Sabah erken kalkmak için ne yapıyorsunuz?',
+                    body: 'Her sabah alarma rağmen kalkamıyorum. Pratik önerileriniz var mı?',
+                    author: 'zeynep_y', time: Date.now() - 432000000, votes: 14, votedBy: {},
+                    answers: [
+                        { id: 1, author: 'ali_can', body: 'Telefonu yataktan uzağa koy, alarmı kapatmak için kalkmak zorunda kalırsın. Bir de gece 11\'den önce yat, gerçekten fark ediyor.', time: Date.now() - 400000000, votes: 10, votedBy: {}, isAI: false }
+                    ]
+                }
+            ];
+            saveQuestions(questions);
+        }
+
+        // AUTH
+        function register() {
+            const username = document.getElementById('regUsername').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            if (!username || !email || !password) { notify('Tüm alanları doldurun!', 'error'); return; }
+            if (username.length < 3) { notify('Kullanıcı adı en az 3 karakter!', 'error'); return; }
+            if (password.length < 4) { notify('Şifre en az 4 karakter!', 'error'); return; }
+            let users = getUsers();
+            if (users.find(u => u.username === username)) { notify('Bu kullanıcı adı alınmış!', 'error'); return; }
+            users.push({ username, email, password, points: 0 });
+            saveUsers(users);
+            currentUser = { username, email, points: 0 };
+            localStorage.setItem('sb_currentUser', JSON.stringify(currentUser));
+            closeModals(); updateHeader(); updateHeroStats();
+            notify('Hoş geldiniz, ' + username + '! 🎉', 'success');
+        }
+
+        function login() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            let users = getUsers();
+            const user = users.find(u => u.username === username && u.password === password);
+            if (!user) { notify('Kullanıcı adı veya şifre hatalı!', 'error'); return; }
+            currentUser = { username: user.username, email: user.email, points: user.points };
+            localStorage.setItem('sb_currentUser', JSON.stringify(currentUser));
+            closeModals(); updateHeader();
+            notify('Tekrar hoş geldiniz, ' + username + '! 👋', 'success');
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('sb_currentUser');
+            updateHeader(); switchTab('all');
+            notify('Çıkış yapıldı', 'success');
+        }
+
+        function updateHeader() {
+            const el = document.getElementById('headerRight');
+            if (currentUser) {
+                const users = getUsers();
+                const u = users.find(x => x.username === currentUser.username);
+                const pts = u ? u.points : 0;
+                currentUser.points = pts;
+                el.innerHTML = `
+                    <div class="user-info">
+                        <div class="user-avatar">${currentUser.username[0].toUpperCase()}</div>
+                        <div>
+                            <div style="font-weight:600;font-size:14px;">${currentUser.username}</div>
+                            <div class="user-points">⭐ ${pts} puan</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-logout" onclick="logout()">Çıkış</button>`;
+            } else {
+                el.innerHTML = `
+                    <button class="btn btn-secondary" onclick="showModal('login')">Giriş Yap</button>
+                    <button class="btn btn-primary" onclick="showModal('register')">Kayıt Ol</button>`;
+            }
+        }
+
+        // MODAL
+        function showModal(type) {
+            closeModals();
+            if (type === 'ask' && !currentUser) { notify('Soru sormak için giriş yapın!', 'error'); showModal('login'); return; }
+            document.getElementById(type + 'Modal').classList.add('active');
+        }
+        function closeModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); }
+
+        // TABS
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            if (tab === 'leaderboard') {
+                document.getElementById('listView').style.display = 'none';
+                document.getElementById('detailView').style.display = 'none';
+                document.getElementById('leaderboardView').style.display = 'block';
+                renderLeaderboard();
+            } else {
+                document.getElementById('listView').style.display = 'block';
+                document.getElementById('detailView').style.display = 'none';
+                document.getElementById('leaderboardView').style.display = 'none';
+                const titles = { 'all': '📋 Tüm Sorular', 'public': '👥 Halka Açık Sorular', 'ai': '🤖 Yapay Zekaya Sorulan', 'my': '📝 Benim Sorularım' };
+                document.getElementById('pageTitle').textContent = titles[tab] || '📋 Sorular';
+                renderQuestions();
+            }
+        }
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderQuestions();
+        }
+
+        // RENDER
+        function renderQuestions() {
+            let questions = getQuestions();
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            if (currentTab === 'public') questions = questions.filter(q => q.type === 'public');
+            if (currentTab === 'ai') questions = questions.filter(q => q.type === 'ai');
+            if (currentTab === 'my') {
+                if (!currentUser) {
+                    document.getElementById('questionsList').innerHTML = '<div class="empty-state"><div class="emoji">🔒</div><h3>Giriş yapmalısınız</h3></div>';
+                    return;
+                }
+                questions = questions.filter(q => q.author === currentUser.username);
+            }
+            if (currentCategory !== 'all') questions = questions.filter(q => q.category === currentCategory);
+            if (search) questions = questions.filter(q => q.title.toLowerCase().includes(search) || q.body.toLowerCase().includes(search));
+            questions.sort((a, b) => b.time - a.time);
+
+            if (questions.length === 0) {
+                document.getElementById('questionsList').innerHTML = '<div class="empty-state"><div class="emoji">🤷</div><h3>Henüz soru yok</h3><p>İlk soruyu siz sorun!</p></div>';
+                return;
+            }
+
+            let html = '';
+            questions.forEach(q => {
+                html += `
+                    <div class="question-card" onclick="showQuestion(${q.id})">
+                        <div class="question-header">
+                            <div class="question-meta">
+                                <div class="question-avatar">${q.author[0].toUpperCase()}</div>
+                                <div class="question-author-info">
+                                    <span class="question-author">${q.author}</span>
+                                    <span class="question-time">${timeAgo(q.time)}</span>
+                                </div>
+                            </div>
+                            <span class="question-type-badge ${q.type === 'ai' ? 'badge-ai' : 'badge-public'}">${q.type === 'ai' ? '🤖 Yapay Zeka' : '👥 Halka Açık'}</span>
+                        </div>
+                        <span class="question-category">${q.category}</span>
+                        <div class="question-title">${q.title}</div>
+                        <div class="question-body">${q.body.substring(0, 150)}${q.body.length > 150 ? '...' : ''}</div>
+                        <div class="question-footer">
+                            <div class="vote-section" onclick="event.stopPropagation()">
+                                <button class="vote-btn ${q.votedBy?.[currentUser?.username] === 'up' ? 'voted-up' : ''}" onclick="voteQuestion(${q.id},'up')">▲</button>
+                                <span class="vote-count">${q.votes}</span>
+                                <button class="vote-btn ${q.votedBy?.[currentUser?.username] === 'down' ? 'voted-down' : ''}" onclick="voteQuestion(${q.id},'down')">▼</button>
+                            </div>
+                            <div class="stat-item">💬 ${q.answers.length} cevap</div>
+                        </div>
+                    </div>`;
+            });
+            document.getElementById('questionsList').innerHTML = html;
+        }
+
+        // DETAIL
+        function showQuestion(id) {
+            const questions = getQuestions();
+            const q = questions.find(x => x.id === id);
+            if (!q) return;
+            document.getElementById('listView').style.display = 'none';
+            document.getElementById('leaderboardView').style.display = 'none';
+            document.getElementById('detailView').style.display = 'block';
+
+            let answersHTML = '';
+            [...q.answers].sort((a, b) => b.votes - a.votes).forEach(a => {
+                answersHTML += `
+                    <div class="answer-card ${a.isAI ? 'ai-answer' : ''}">
+                        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                            <div class="question-meta">
+                                <div class="question-avatar" style="width:32px;height:32px;font-size:13px;${a.isAI ? 'background:linear-gradient(135deg,#7c3aed,#4f46e5)' : ''}">${a.isAI ? '🤖' : a.author[0].toUpperCase()}</div>
+                                <div>
+                                    <span class="question-author">${a.author}</span>
+                                    ${a.isAI ? '<span class="ai-badge">🤖 AI</span>' : ''}
+                                    <div class="question-time">${timeAgo(a.time)}</div>
+                                </div>
+                            </div>
+                            ${currentUser && a.author === currentUser.username ? `<button class="delete-btn" onclick="deleteAnswer(${q.id},${a.id})">🗑️ Sil</button>` : ''}
+                        </div>
+                        <div class="answer-body">${a.body}</div>
+                        <div class="vote-section">
+                            <button class="vote-btn ${a.votedBy?.[currentUser?.username] === 'up' ? 'voted-up' : ''}" onclick="voteAnswer(${q.id},${a.id},'up')">▲</button>
+                            <span class="vote-count">${a.votes}</span>
+                            <button class="vote-btn ${a.votedBy?.[currentUser?.username] === 'down' ? 'voted-down' : ''}" onclick="voteAnswer(${q.id},${a.id},'down')">▼</button>
+                        </div>
+                    </div>`;
+            });
+
+            const answerForm = q.type === 'public' ? `
+                <div class="answer-form">
+                    <h4>✍️ Cevabınızı Yazın</h4>
+                    <div class="form-group"><textarea id="answerText" placeholder="Bu soruya cevabınızı yazın..."></textarea></div>
+                    <button class="btn btn-green" onclick="submitAnswer(${q.id})">Cevabı Gönder</button>
+                </div>` : `
+                <div class="answer-form">
+                    <h4>🤖 ${q.answers.length > 0 ? 'AI tekrar cevaplasın mı?' : 'AI henüz cevaplamamış'}</h4>
+                    <button class="btn btn-ai" onclick="getAIAnswer(${q.id})">AI'dan Cevap Al</button>
+                </div>`;
+
+            document.getElementById('detailContent').innerHTML = `
+                <div class="question-card" style="cursor:default;">
+                    <div class="question-header">
+                        <div class="question-meta">
+                            <div class="question-avatar">${q.author[0].toUpperCase()}</div>
+                            <div class="question-author-info">
+                                <span class="question-author">${q.author}</span>
+                                <span class="question-time">${timeAgo(q.time)}</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:8px;align-items:center;">
+                            <span class="question-type-badge ${q.type === 'ai' ? 'badge-ai' : 'badge-public'}">${q.type === 'ai' ? '🤖 Yapay Zeka' : '👥 Halka Açık'}</span>
+                            ${currentUser && q.author === currentUser.username ? `<button class="delete-btn" onclick="deleteQuestion(${q.id})">🗑️</button>` : ''}
+                        </div>
+                    </div>
+                    <span class="question-category">${q.category}</span>
+                    <div class="question-title">${q.title}</div>
+                    <div class="question-body" style="white-space:pre-wrap;">${q.body}</div>
+                    <div class="question-footer">
+                        <div class="vote-section">
+                            <button class="vote-btn ${q.votedBy?.[currentUser?.username] === 'up' ? 'voted-up' : ''}" onclick="voteQuestion(${q.id},'up');showQuestion(${q.id});">▲</button>
+                            <span class="vote-count">${q.votes}</span>
+                            <button class="vote-btn ${q.votedBy?.[currentUser?.username] === 'down' ? 'voted-down' : ''}" onclick="voteQuestion(${q.id},'down');showQuestion(${q.id});">▼</button>
+                        </div>
+                        <div class="stat-item">💬 ${q.answers.length} cevap</div>
+                    </div>
+                </div>
+                <div class="answers-section">
+                    <h3>💬 Cevaplar (${q.answers.length})</h3>
+                    ${q.answers.length === 0 ? '<div class="empty-state"><div class="emoji">💭</div><h3>Henüz cevap yok</h3></div>' : answersHTML}
+                </div>
+                ${answerForm}`;
+        }
+
+        function goBack() {
+            document.getElementById('detailView').style.display = 'none';
+            document.getElementById('listView').style.display = 'block';
+            renderQuestions();
+        }
+
+        // ASK
+        function askQuestion() {
+            if (!currentUser) { notify('Giriş yapın!', 'error'); return; }
+            const type = document.getElementById('questionType').value;
+            const category = document.getElementById('questionCategory').value;
+            const title = document.getElementById('questionTitle').value.trim();
+            const body = document.getElementById('questionBody').value.trim();
+            if (!title || !body) { notify('Başlık ve açıklama gerekli!', 'error'); return; }
+
+            let questions = getQuestions();
+            const newQ = { id: Date.now(), type, category, title, body, author: currentUser.username, time: Date.now(), votes: 0, votedBy: {}, answers: [] };
+            questions.push(newQ);
+            saveQuestions(questions);
+            addPoints(currentUser.username, 5);
+            closeModals();
+            document.getElementById('questionTitle').value = '';
+            document.getElementById('questionBody').value = '';
+            notify('Soru paylaşıldı! +5 puan 🎉', 'success');
+
+            if (type === 'ai') {
+                setTimeout(() => { getAIAnswer(newQ.id); showQuestion(newQ.id); }, 500);
+            }
+            renderQuestions(); updateHeader(); updateHeroStats();
+        }
+
+        // ANSWER
+        function submitAnswer(qId) {
+            if (!currentUser) { notify('Giriş yapın!', 'error'); showModal('login'); return; }
+            const text = document.getElementById('answerText').value.trim();
+            if (!text) { notify('Cevap boş olamaz!', 'error'); return; }
+            let questions = getQuestions();
+            const q = questions.find(x => x.id === qId);
+            if (!q) return;
+            q.answers.push({ id: Date.now(), author: currentUser.username, body: text, time: Date.now(), votes: 0, votedBy: {}, isAI: false });
+            saveQuestions(questions);
+            addPoints(currentUser.username, 10);
+            updateHeader(); updateHeroStats();
+            notify('Cevap eklendi! +10 puan ⭐', 'success');
+            showQuestion(qId);
+        }
+
+        // AI
+        function getAIAnswer(qId) {
+            let questions = getQuestions();
+            const q = questions.find(x => x.id === qId);
+            if (!q) return;
+            q.answers.push({ id: Date.now(), author: 'AI Asistan', body: generateAIResponse(q.title, q.body, q.category), time: Date.now(), votes: 0, votedBy: {}, isAI: true });
+            saveQuestions(questions); updateHeroStats();
+            notify('🤖 AI cevap verdi!', 'success');
+            showQuestion(qId);
+        }
+
+        function generateAIResponse(title, body, category) {
+            const r = {
+                'Teknoloji': `Bu çok güzel bir teknoloji sorusu!\n\n"${title}" konusunda:\n\n🔹 Teknoloji dünyası sürekli gelişiyor ve bu alanda her gün yeni gelişmeler yaşanıyor.\n\n🔹 Yapay zeka, bulut bilişim, blockchain ve IoT gibi teknolojiler büyük dönüşüm yaratıyor.\n\n🔹 Bu konuda daha fazla bilgi için güvenilir teknoloji bloglarını takip edin.\n\n🔹 Pratik deneyim için online kurslar ve açık kaynak projeler harika başlangıçtır.\n\n🚀 Teknoloji bir araçtır, önemli olan nasıl kullandığınızdır!`,
+                'Bilim': `Harika bir bilim sorusu! 🔬\n\n"${title}" konusu:\n\n🔹 Bilimsel yöntem: gözlem → hipotez → deney → sonuç döngüsüne dayanır.\n\n🔹 Bu konu hakkında birçok bilimsel çalışma yapılmıştır.\n\n🔹 Araştırırken hakemli dergilere başvurmanızı öneririm.\n\n📚 Önerilen: TÜBİTAK, Khan Academy, National Geographic Türkiye\n\nSormaya devam edin! 🌟`,
+                'Sağlık': `Sağlık konusu! ⚠️ Bu bilgiler genel kültürdür, doktor tavsiyesi yerine geçmez!\n\n"${title}" hakkında:\n\n🔹 Düzenli egzersiz, dengeli beslenme ve yeterli uyku temeldir.\n\n🔹 Sağlık sorunu varsa mutlaka uzman doktora başvurun.\n\n🔹 Güvenilir bilgi: Sağlık Bakanlığı, WHO.\n\n🔹 Düzenli check-up yaptırın.\n\n⚠️ İnternetteki sağlık bilgilerine körü körüne güvenmeyin!`,
+                'Eğitim': `Eğitim sorusu! 📚\n\n"${title}" konusunda:\n\n🔹 Etkili öğrenme aktif katılım ve düzenli tekrar gerektirir.\n\n🔹 Herkesin öğrenme stili farklıdır: görsel, işitsel, kinestetik.\n\n🔹 Kendi stilinizi keşfetmek verimliğinizi artırır.\n\n🔹 Modern araçlar geleneksel yöntemleri tamamlar.\n\n💡 Hedeflerinizi küçük parçalara bölün!`,
+                'Günlük Hayat': `Günlük hayat sorusu! 🌟\n\n"${title}" hakkında:\n\n🔹 Günlük rutinler hayat kalitemizi etkiler.\n\n🔹 Küçük alışkanlık değişiklikleri büyük farklar yaratır.\n\n🔹 Zaman yönetimi ve stres kontrolü önemli.\n\n🔹 Kendinize zaman ayırmayı ihmal etmeyin.\n\n😊 Hayat kısa, anı yaşayın ama geleceği de planlayın!`,
+                'Tarih': `Tarih sorusu! 📜\n\n"${title}" konusu:\n\n🔹 Tarih insanlığın kolektif hafızasıdır.\n\n🔹 Her olayı kendi döneminin koşullarında değerlendirin.\n\n🔹 Birincil kaynaklar en güvenilirdir.\n\n🔹 Farklı perspektiflerden bakmak önemlidir.\n\n📖 Tarih okumak bugünü anlamaktır!`,
+                'Felsefe': `Derin bir felsefe sorusu! 🤔\n\n"${title}" üzerine:\n\n🔹 Felsefe en temel soruları sormakla başlar.\n\n🔹 Sokrates: "Bildiğim tek şey, hiçbir şey bilmediğimdir."\n🔹 Descartes: "Düşünüyorum, o halde varım."\n\n🔹 Doğru/yanlıştan çok düşünme süreci önemli.\n\n💭 Sormaya devam edin!`,
+                'Diğer': `İlginç bir soru! 📌\n\n"${title}" hakkında:\n\n🔹 Bu konuda farklı bakış açıları olabilir.\n\n🔹 Güvenilir kaynaklardan araştırın.\n\n🔹 Topluluk deneyimleri çok değerli.\n\n✨ Sormaya devam edin, birlikte öğrenelim!`
+            };
+            return r[category] || r['Diğer'];
+        }
+
+        // VOTING
+        function voteQuestion(id, dir) {
+            if (!currentUser) { notify('Giriş yapın!', 'error'); return; }
+            let questions = getQuestions();
+            const q = questions.find(x => x.id === id);
+            if (!q) return;
+            if (!q.votedBy) q.votedBy = {};
+            const prev = q.votedBy[currentUser.username];
+            if (prev === dir) { q.votes += (dir === 'up' ? -1 : 1); delete q.votedBy[currentUser.username]; }
+            else {
+                if (prev) q.votes += (dir === 'up' ? 2 : -2);
+                else q.votes += (dir === 'up' ? 1 : -1);
+                q.votedBy[currentUser.username] = dir;
+                if (dir === 'up' && q.author !== currentUser.username) addPoints(q.author, 2);
+            }
+            saveQuestions(questions); renderQuestions();
+        }
+
+        function voteAnswer(qId, aId, dir) {
+            if (!currentUser) { notify('Giriş yapın!', 'error'); return; }
+            let questions = getQuestions();
+            const q = questions.find(x => x.id === qId);
+            if (!q) return;
+            const a = q.answers.find(x => x.id === aId);
+            if (!a) return;
+            if (!a.votedBy) a.votedBy = {};
+            const prev = a.votedBy[currentUser.username];
+            if (prev === dir) { a.votes += (dir === 'up' ? -1 : 1); delete a.votedBy[currentUser.username]; }
+            else {
+                if (prev) a.votes += (dir === 'up' ? 2 : -2);
+                else a.votes += (dir === 'up' ? 1 : -1);
+                a.votedBy[currentUser.username] = dir;
+                if (dir === 'up' && a.author !== currentUser.username && !a.isAI) addPoints(a.author, 3);
+            }
+            saveQuestions(questions); showQuestion(qId);
+        }
+
+        // DELETE
+        function deleteQuestion(id) {
+            if (!confirm('Bu soruyu silmek istediğinize emin misiniz?')) return;
+            let questions = getQuestions().filter(q => q.id !== id);
+            saveQuestions(questions); goBack(); updateHeroStats();
+            notify('Soru silindi', 'success');
+        }
+
+        function deleteAnswer(qId, aId) {
+            if (!confirm('Bu cevabı silmek istediğinize emin misiniz?')) return;
+            let questions = getQuestions();
+            const q = questions.find(x => x.id === qId);
+            if (!q) return;
+            q.answers = q.answers.filter(a => a.id !== aId);
+            saveQuestions(questions); showQuestion(qId); updateHeroStats();
+            notify('Cevap silindi', 'success');
+        }
+
+        // POINTS
+        function addPoints(username, pts) {
+            let users = getUsers();
+            const u = users.find(x => x.username === username);
+            if (u) { u.points = (u.points || 0) + pts; saveUsers(users); }
+        }
+
+        // LEADERBOARD
+        function renderLeaderboard() {
+            let users = getUsers().sort((a, b) => (b.points || 0) - (a.points || 0));
+            const questions = getQuestions();
+            let html = '';
+            users.forEach((u, i) => {
+                const qC = questions.filter(q => q.author === u.username).length;
+                const aC = questions.reduce((s, q) => s + q.answers.filter(a => a.author === u.username && !a.isAI).length, 0);
+                html += `
+                    <div class="leaderboard-item">
+                        <div class="leaderboard-rank ${i < 3 ? 'rank-' + (i + 1) : ''}">${i < 3 ? ['🥇','🥈','🥉'][i] : '#' + (i + 1)}</div>
+                        <div class="question-avatar">${u.username[0].toUpperCase()}</div>
+                        <div class="leaderboard-info">
+                            <div class="leaderboard-name">${u.username}</div>
+                            <div class="leaderboard-stats">${qC} soru · ${aC} cevap</div>
+                        </div>
+                        <div class="leaderboard-points">⭐ ${u.points || 0}</div>
+                    </div>`;
+            });
+            document.getElementById('leaderboardList').innerHTML = html || '<div class="empty-state"><h3>Henüz kullanıcı yok</h3></div>';
+        }
+
+        // UTILS
+        function timeAgo(ts) {
+            const d = Date.now() - ts;
+            const m = Math.floor(d / 60000), h = Math.floor(d / 3600000), dy = Math.floor(d / 86400000);
+            if (m < 1) return 'Az önce';
+            if (m < 60) return m + ' dk önce';
+            if (h < 24) return h + ' saat önce';
+            if (dy < 30) return dy + ' gün önce';
+            return Math.floor(dy / 30) + ' ay önce';
+        }
+
+        function notify(msg, type) {
+            const el = document.createElement('div');
+            el.className = 'notification ' + type;
+            el.textContent = msg;
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 3500);
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(o => {
+            o.addEventListener('click', (e) => { if (e.target === o) closeModals(); });
+        });
+
+        init();
+    </script>
+</body>
+</html>
